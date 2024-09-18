@@ -1,11 +1,12 @@
 // ceramicService.ts
 
-import { SignedEvent } from '@ceramic-sdk/events';
+import { SignedEvent, InitEventPayload } from '@ceramic-sdk/events';
 import { CeramicClient } from '@ceramic-sdk/http-client';
 import { CommitID, StreamID, randomCID } from '@ceramic-sdk/identifiers';
 import { createInitEvent as createModelEvent } from '@ceramic-sdk/model-client';
 import {
-  getDeterministicInitEvent,
+
+  getDeterministicInitEventPayload,
   createDataEvent,
   createDataEventPayload
 } from '@ceramic-sdk/model-instance-client';
@@ -68,23 +69,23 @@ async function createDocument(
   client: CeramicClient,
   did: DID,
   model: StreamID,
-  content: Record<string, unknown>
+  content: Record<string, unknown>,
 ): Promise<StreamID> {
   // Generate the deterministic init event
-  const initEvent = getDeterministicInitEvent(model, did.id);
+  const initEvent = getDeterministicInitEventPayload(model, did.id);
   // Post the init event to get the stream ID
-  const initCid = await client.postEventType(SignedEvent, initEvent);
+  const initCid = await client.postEventType(InitEventPayload, initEvent);
   const streamID = getStreamID(initCid);
 
   console.log(`Initialized document with StreamID: ${streamID}`);
-  
 
   // Create a data event to set the content
   const dataEvent = await createDataEvent({
-    controller: did,
-    newContent: content,
-    currentID: CommitID.fromStream(model, randomCID()),
+      controller: did,
+      newContent: content,
+      currentID: CommitID.fromStream(streamID, initCid),
   });
+  console.log(JSON.stringify(content, null, 4))
   const dataCid = await client.postEventType(SignedEvent, dataEvent);
   console.log(`Updated document content with CID: ${dataCid}`);
 

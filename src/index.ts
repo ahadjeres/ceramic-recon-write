@@ -17,13 +17,13 @@ async function main() {
 
   // Deploy Models
 
-  const oamoCredentialModelStreamID = await deployModel(client, did, OamoCredentialModel)
-  const oamoPublicProfileModelStreamID = await deployModel(client, did, OamoPublicProfileModel)
-  const oamoCredentialRelationModelStreamID = await deployModel(client, did, OamoCredentialRelationModel)
+  // const oamoCredentialModelStreamID = await deployModel(client, did, OamoCredentialModel)
+  // const oamoPublicProfileModelStreamID = await deployModel(client, did, OamoPublicProfileModel)
+  // const oamoCredentialRelationModelStreamID = await deployModel(client, did, OamoCredentialRelationModel)
 
-  // const oamoPublicProfileModelStreamID = StreamID.fromString('kjzl6hvfrbw6c7ztuql3m2m6drt841et6zi9pfsjwsbmk06218rdr21oxilbktj');
-  // const oamoCredentialModelStreamID = StreamID.fromString('kjzl6hvfrbw6c5zm8pp4bx5ws3gkztwl2zjw7bx3edsg27712smytk4tuyt4a0h');
-  // const oamoCredentialRelationModelStreamID = StreamID.fromString('kjzl6hvfrbw6cb5wblov9k4mdyc15tewe3ox6pgpmpvnd1gye5zmjafadfjw85a');
+  const oamoPublicProfileModelStreamID = StreamID.fromString('kjzl6hvfrbw6c7ztuql3m2m6drt841et6zi9pfsjwsbmk06218rdr21oxilbktj');
+  const oamoCredentialModelStreamID = StreamID.fromString('kjzl6hvfrbw6c5zm8pp4bx5ws3gkztwl2zjw7bx3edsg27712smytk4tuyt4a0h');
+  const oamoCredentialRelationModelStreamID = StreamID.fromString('kjzl6hvfrbw6cb5wblov9k4mdyc15tewe3ox6pgpmpvnd1gye5zmjafadfjw85a');
   
   // Create OamoPublicProfile Document
   const publicProfileContent = {
