@@ -25,13 +25,17 @@
     "@ceramic-sdk/model-client": "^0.1.0",
     "@ceramic-sdk/model-instance-client": "^0.1.0",
     "@ceramic-sdk/model-instance-protocol": "^0.1.0",
+    "@ceramicnetwork/http-client": "^6.4.0",
+    "@ceramicnetwork/streamid": "^5.6.0",
     "@didtools/key-did": "^1.0.0",
     "dotenv": "^16.4.5",
+    "pg": "^8.13.0",
     "ts-essentials": "^10.0.2",
     "winston": "^3.14.2"
   },
   "devDependencies": {
     "@types/node": "^22.5.5",
+    "@types/pg": "^8.11.10",
     "nodemon": "^3.1.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
